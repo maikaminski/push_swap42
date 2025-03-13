@@ -1,0 +1,77 @@
+Push_swap é um projeto desafiador para muitos alunos da escola 42. O objetivo é criar um programa em C que imprima a série de instruções mais otimizada para ordenar uma lista aleatória de inteiros. Para este projeto, precisaremos implementar um algoritmo de ordenação eficiente que respeite as restrições impostas pelo enunciado.
+
+A primeira coisa a perceber no push_swap é que o próprio programa não precisa ser extremamente otimizado, apenas sua saída precisa ser. Isso significa que podemos muito bem ordenar nossa pilha de números várias vezes nos bastidores para escolher a ação mais eficiente a ser impressa.
+Apesar das restrições impostas no enunciado do push_swap, existem várias maneiras de projetar um algoritmo de ordenação. Um dos métodos mais populares é o radix sort, que usa bitshifting e operadores bitwise. Leo Fu descreve isso aqui. Outro método, descrito aqui por Jamie Dawson, envolve dividir os números em partes.
+Neste artigo, tentaremos um algoritmo muito otimizado que ordena por índice e posição.
+
+Escolhendo um Algoritmo de Ordenação dependendo do Número de Valores a Ordenar
+A maioria dos outros algoritmos do push_swap tem métodos de ordenação distintos para 5, 100 e 500 números. Não é o caso aqui. O que funciona para 500 números também funciona para 5. No entanto, ainda precisamos de um algoritmo diferente para ordenar 3 números.
+Mas antes de escolhermos entre dois métodos de ordenação, é uma boa ideia verificar se a stack A já está ordenada, só para garantir. Se estiver, o trabalho do push_swap termina aqui.
+No entanto, se a stack A não estiver ordenada, precisaremos proceder de maneira diferente dependendo do número de valores que precisamos ordenar:
+
+2 valores: tudo o que precisamos fazer é sa.
+3 valores: vamos para o algoritmo de 3 números.
+3 valores: vamos para o algoritmo de mais de três números.
+
+Para 3 números, existem seis casos possíveis:
+
+1 2 3 → sem ação
+1 3 2 → rra → 2 1 3 → sa → 1 2 3 → 2 ações
+2 1 3 → sa → 1 2 3 → 1 ação
+2 3 1 → rra → 1 2 3 → 1 ação
+3 1 2 → ra → 1 2 3 → 1 ação
+3 2 1 → ra → 2 1 3 → sa → 1 2 3 → 2 ações
+Nosso pequeno algoritmo de ordenação para 3 números precisa apenas escolher uma das três ações: ra, rra e sa, dependendo da posição do maior número. Podemos resumir o algoritmo simples assim:
+
+Se o índice do primeiro número for o maior, faça ra.
+Caso contrário, se o índice do segundo número for o maior, faça rra.
+Se o índice do primeiro número for maior que o índice do segundo, faça sa.
+Não usamos a stack B aqui: um pb para mover um número de stack A para stack B, seguido de um pa para devolvê-lo a stack A, seria um desperdício de ações!
+
+Para uma série maior de números a ordenar, precisaremos calcular mais ações. Para decidir qual movimento fazer a seguir para ordenar cada valor, precisamos calcular a posição de cada elemento em sua pilha. Depois, podemos comparar o número de ações necessárias para colocar cada valor no topo da pilha. Só então podemos escolher a sequência de ações mais barata.
+
+Nosso algoritmo de ordenação terá 8 etapas, desde que, claro, a stack A não esteja já ordenada:
+
+Mover todos os elementos da stack A para a stack B, exceto três.
+Ordenar os 3 números restantes em stack A.
+Repetir enquanto houver elementos em stack B:
+Encontrar a posição atual de cada elemento nas pilhas A e B.
+Calcular a posição alvo na stack A onde cada elemento da stack B deve estar.
+Calcular o número de ações (o custo) para mover cada elemento da stack B para sua posição alvo em stack A e escolher o elemento mais barato para mover.
+Executar a sequência de ações necessárias para mover o elemento da stack B para stack A.
+Se stack A não estiver ordenada, escolher entre ra e rra para rotacioná-la para ordem crescente.
+Passo 1: Enviar Todos para a Stack B
+O primeiro passo é enviar todos os elementos da stack A para a stack B, exceto 3. Mantemos três elementos na stack A para evitar ações extras. Afinal, já temos um algoritmo simples que podemos usar para ordenar 3 números diretamente na stack A. No entanto, empurrar todos os nossos elementos para a stack B não significa que não podemos fazer isso de forma um pouco ordenada. De fato, graças ao nosso sistema de índices, podemos já fazer uma ordenação simples em 2 etapas.
+Primeiro, podemos empurrar todos os valores menores. Então, se um elemento tiver um índice menor que o índice médio de todos os elementos (o número total de valores a ordenar dividido por 2), podemos empurrá-lo para a stack B. Caso contrário, fazemos uma rotação (rotate A). Depois disso, podemos livremente empurrar todos os outros elementos para a stack B, exceto pelos três últimos que permanecerão na stack A.
+Dessa forma, a stack B já estará vagamente ordenada, o que reduzirá o número de ações que precisaremos fazer mais tarde.
+
+Passo 2: Ordenar os 3 Números Restantes em Stack A
+É provável que os três elementos que mantivemos em stack A precisem ser ordenados. Felizmente, temos nosso pequeno algoritmo de ordenação de 3 números para ajudar.
+Com esses três valores em ordem, tudo o que precisamos fazer é inserir cada elemento da stack B na posição correta em stack A. Mas encontrar a sequência mais eficiente de ações é um pouco mais complicado do que isso. Vamos ver como podemos gerenciar isso.
+
+Passo 3: Calculando as Posições
+Uma etapa crucial em nosso algoritmo push_swap é encontrar a posição de cada elemento em sua pilha, bem como a posição alvo na stack A onde um elemento da stack B deve ir. Com essas informações de posição, seremos capazes de calcular a sequência de ações mais barata e escolher qual elemento mover primeiro.
+
+Encontrando a Posição de Cada Elemento
+A posição de um elemento é simplesmente uma representação de onde ele está atualmente na pilha. Vamos pegar uma lista aleatória de quatro valores:
+Valor: 3 0 9 1
+Índice: [3] [1] [4] [2]
+Posição: <0> <1> <2> <3>
+
+Tudo o que precisamos fazer para encontrar a posição de cada elemento é percorrer a pilha de cima para baixo e atribuir a cada elemento uma posição que vamos incrementar a cada iteração. Precisamos encontrar as posições de cada elemento em ambas as pilhas dessa forma. Claro, precisaremos atualizar essas posições frequentemente, sempre que quisermos calcular a sequência de ações mais eficiente.
+
+Passo 4: Encontrando a Posição Alvo de Cada Elemento em Stack B
+Para cada elemento em stack B, precisamos calcular uma posição alvo. A posição alvo é onde um elemento de stack B deve estar em stack A. Mais precisamente, é a posição do elemento da stack A que deve estar no topo de stack A quando empurrarmos esse elemento de B para A.
+
+Podemos identificar essa posição alvo simplesmente percorrendo a stack A para encontrar o índice superior mais próximo ao do elemento de stack B. A posição do elemento da stack A com esse índice será a posição alvo do elemento da stack B.
+
+Por que Calcular Posições Assim?
+Com esses valores de posição, seremos capazes de determinar quantas ações será necessário fazer para colocar cada pilha na posição certa para cada elemento. Depois, podemos decidir qual elemento da stack B é mais barato de mover primeiro.
+
+Passo 5: Executando a Sequência de Ações Escolhida
+Depois de encontrar o elemento mais barato da stack B, precisamos executar a sequência de ações que o levará ao topo de stack A.
+
+Passo 6: Rotacionar a Stack A para a Posição Correta
+Quando não houver mais elementos em stack B, isso não significa que stack A esteja totalmente em ordem! Precisamos ajustar stack A com ra ou rra até que o elemento com o menor índice esteja no topo e o elemento com o maior índice esteja no fundo.
+E pronto! Stack A deve agora estar corretamente ordenada em ordem crescente, e nosso programa push_swap terá
+ impresso o menor número de instruções necessário para alcançar este resultado.
