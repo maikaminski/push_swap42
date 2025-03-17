@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:59:09 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/12 18:41:21 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:57:56 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 // somente números
 bool	only_numbers(char *arg)
 {
-    int 	i;
-	
+	int	i;
+
+	i = 0;
 	if (arg == NULL || arg[0] == '\0')
 		return (false);
 	if (arg[i] == '+' || arg[i] == '-')
@@ -46,8 +47,15 @@ bool	check_duplicate(t_list *list, int nbr)
 	return (true);
 }
 
-// sintaxe correta
-
 // free
+void free_list(t_list **list)
+{
+    t_list *temp;
 
-
+    while (*list)
+    {
+        temp = (*list)->next;
+        free(*list);
+        *list = temp;
+    }
+}

@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:52:01 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/12 18:43:18 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:15:27 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_list
 	int				push_cost;
 	int				value;
 	int				index;
+	bool			above_median;
+	bool			cheapest;
 	struct s_list	*target;
 	struct s_list	*prev;	
 	struct s_list	*next;
@@ -53,7 +55,7 @@ bool	check_duplicate(t_list *list, int nbr);
 
 //utils
 
-int		stack_len(t_list	*list);
+int		list_len(t_list	*list);
 t_list	*find_last(t_list *list);
 t_list	*find_max(t_list *list);
 t_list	*find_min(t_list *list);

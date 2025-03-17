@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 19:35:21 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/11 19:58:34 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/14 14:22:54 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ static void	swap(t_list **list)
 	(*list)->next = (*list)->prev;
 	(*list)->prev = NULL;
 }
-
-//as que vão printar, vão ser todas só void
 
 void	sa(t_list **list)
 {

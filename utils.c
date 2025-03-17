@@ -6,17 +6,17 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 11:09:52 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/12 13:42:10 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/14 14:48:23 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	stack_len(t_list	*list) //tamanho da lista
+int	list_len(t_list	*list)
 {
 	t_list	*current;
 	int		i;
-	
+
 	current = list;
 	i = 0;
 	while (current)
@@ -27,21 +27,21 @@ int	stack_len(t_list	*list) //tamanho da lista
 	return (i);
 }
 
-t_list	*find_last(t_list *list) // último node da lista
+t_list	*find_last(t_list *list)
 {
 	t_list	*current;
-	
-    if (!list)
+
+	if (!list)
 		return (NULL);
 	current = list;
-	while(current->next)
+	while (current->next)
 		current = current->next;
 	return (current);
 }
 
-t_list	*find_max(t_list *list) // maior valor numa lista encadeada
+t_list	*find_max(t_list *list)
 {
-    t_list	*node;
+	t_list	*node;
 	long	max;
 
 	if (!list)
@@ -59,9 +59,9 @@ t_list	*find_max(t_list *list) // maior valor numa lista encadeada
 	return (node);
 }
 
-t_list	*find_min(t_list *list) // acha o menor valor na lista
+t_list	*find_min(t_list *list)
 {
-    t_list 	*node;
+	t_list	*node;
 	long	min;
 
 	if (!list)
@@ -79,7 +79,7 @@ t_list	*find_min(t_list *list) // acha o menor valor na lista
 	return (node);
 }
 
-bool	is_sorted(t_list *list) //ja está ordenada
+bool	is_sorted(t_list *list)
 {
 	while (list->next)
 	{
@@ -87,6 +87,5 @@ bool	is_sorted(t_list *list) //ja está ordenada
 			return (false);
 		list = list->next;
 	}
-	return (true); 
+	return (true);
 }
-

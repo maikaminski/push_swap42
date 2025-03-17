@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:51:39 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/12 17:29:33 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:05:45 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,3 @@ void	pb(t_list **list_b, t_list **list_a)
 	push(list_b, list_a);
 	ft_printf("pb\n");
 }
-//as que vão printar vão ser todas só void

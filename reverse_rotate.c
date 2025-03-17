@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:58:29 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/12 18:19:41 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/14 14:21:46 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	reverse_rotate(t_list **list)
 {
-    t_list 	*node_to_reverse;
+	t_list	*node_to_reverse;
 
 	if (!*list || !(*list)->next)
 		return ;

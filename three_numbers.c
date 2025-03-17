@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:52:37 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/12 18:36:42 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/14 14:23:31 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	three_numbers(t_list **list_a)
 {
 	t_list	*biggest;
-	
+
 	if (is_sorted(*list_a))
 		return ;
 	biggest = find_max(*list_a);

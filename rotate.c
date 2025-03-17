@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:51:21 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/12 18:20:28 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:58:36 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void rotate(t_list **list)
+static void	rotate(t_list **list)
 {
-    t_list	*node_to_rotate;
+	t_list	*node_to_rotate;
 	t_list	*last_node;
 
 	if (!*list || !(*list)->next)
@@ -35,25 +35,24 @@ static void rotate(t_list **list)
 		node_to_rotate->prev = last_node;
 		node_to_rotate->next = NULL;
 	}
-	
 }
 
 void	ra(t_list **list_a)
 {
 	rotate(list_a);
-	ft_printf("rra\n");
+	ft_printf("ra\n");
 }
 
 void	rb(t_list **list_b)
 {
 	rotate(list_b);
-	ft_printf("rrb\n");
+	ft_printf("rb\n");
 }
 
 void	rr(t_list **list_a, t_list **list_b)
 {
 	rotate(list_a);
 	rotate(list_b);
-	ft_printf("rrr\n");
+	ft_printf("rr\n");
 }
 //as que vão printar vão ser todas só void
