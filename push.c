@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:51:39 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/17 13:05:45 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:01:18 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	push(t_list **list_dest, t_list **list_src)
 {
     t_list	*node_to_push;
 
-	if (!*list_src)
+	if (!*list_src || !list_src || !list_dest)
 		return ;
 	node_to_push = *list_src; // Remove o primeiro nó da lista de origem
 	*list_src = (*list_src)->next;// Remove o primeiro nó da lista de origem

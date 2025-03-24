@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:53:05 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/17 17:54:39 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/24 13:39:01 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,20 @@ static void	set_cost(t_list *list_a, t_list *list_b)
 	int	len_a;
 	int	len_b;
 
-	len_a = ft_list_size(list_a);
-	len_b = ft_list_size(list_b);
+	len_a = list_len(list_a);
+	len_b = list_len(list_b);
 	while (list_a)
 	{
 		list_a->push_cost = list_a->index;
 		if (!(list_a->above_median))
 			list_a->push_cost = len_a - (list_a->index);
-		if (list_a->target->above_median)
-			list_a->push_cost += list_a->target->index;
-		else
-			list_a->push_cost += len_b - (list_a->target->index);
+		if (list_a->target)
+		{
+			if (list_a->target->above_median)
+				list_a->push_cost += list_a->target->index;
+			else
+				list_a->push_cost += len_b - (list_a->target->index);
+		}
 		list_a = list_a->next;
 	}
 }

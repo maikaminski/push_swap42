@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 11:09:52 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/14 14:48:23 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:07:52 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	list_len(t_list	*list)
 {
 	t_list	*current;
 	int		i;
-
+	
+	if (!list)
+		return (0);
 	current = list;
 	i = 0;
 	while (current)
