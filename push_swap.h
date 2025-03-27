@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:52:01 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/27 15:53:46 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:27:53 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_list	*init_list(int argc, char **argv);
 void	move_cheapest_to_a(t_list **list_a, t_list **list_b);
 void	move_cheapest_to_b(t_list **list_a, t_list **list_b);
 int		ft_isdigit(int c);
-int		ft_atoi(const char *nptr);
+long	ft_atol(const char *nptr);
 t_list	*find_last(t_list *list);
 t_list	*find_max(t_list *list);
 t_list	*find_min(t_list *list);

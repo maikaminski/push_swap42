@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:02:54 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/27 16:03:14 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:29:43 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-int	ft_atoi(const char *nptr)
+long	ft_atol(const char *nptr)
 {
-	int		i;
+	long	i;
 	int		signal;
 	long	result;
 
@@ -41,13 +41,11 @@ int	ft_atoi(const char *nptr)
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		result = result * 10 + (nptr[i] - '0');
-		if (result * signal > INT_MAX || result * signal < INT_MIN)
-			exit(1);
 		i++;
 	}
 	if (nptr[i] != '\0' && !ft_isdigit(nptr[i]))
 		exit(1);
-	return ((int)(result * signal));
+	return (result * signal);
 }
 
 t_list	*list_new(int value)
@@ -92,9 +90,12 @@ t_list	*init_list(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		value = ft_atoi(argv[i]);
-		if (value > INT_MAX || value < INT_MIN || !only_numbers(argv[i]) \
-				|| !check_duplicate(list, value))
+		if (!only_numbers(argv[i]))
+			cleanup_and_exit(&list);
+		value = ft_atol(argv[i]);
+		if (value > INT_MAX || value < INT_MIN)
+			cleanup_and_exit(&list);
+		if (!check_duplicate(list, value))
 			cleanup_and_exit(&list);
 		new_node = list_new(value);
 		if (!new_node)
