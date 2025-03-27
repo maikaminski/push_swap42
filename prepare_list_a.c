@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:53:05 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/24 15:22:28 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/27 14:50:19 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ static void	set_cost(t_list *list_a, t_list *list_b)
 
 void	prepare_list_a(t_list *list_a, t_list *list_b)
 {
-	// position(list_a);
-	// position(list_b);
+	position(list_a);
+	position(list_b);
 	set_target_a(list_a, list_b);
 	set_cost(list_a, list_b);
 }

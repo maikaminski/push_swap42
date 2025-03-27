@@ -6,13 +6,12 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:59:09 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/24 13:40:00 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:39:03 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// somente números
 bool	only_numbers(char *arg)
 {
 	int	i;
@@ -31,11 +30,8 @@ bool	only_numbers(char *arg)
 	return (true);
 }
 
-//somente números diferentes
 bool	check_duplicate(t_list *list, int nbr)
 {
-	// if (!list)
-	// 	return (false);
 	while (list)
 	{
 		if (list->value == nbr)
@@ -45,15 +41,15 @@ bool	check_duplicate(t_list *list, int nbr)
 	return (true);
 }
 
-// free
-void free_list(t_list **list)
+void	free_list(t_list **list)
 {
-    t_list *temp;
+	t_list	*temp;
 
-    while (*list)
-    {
-        temp = (*list)->next;
-        free(*list);
-        *list = temp;
-    }
+	while (*list)
+	{
+		temp = (*list)->next;
+		free(*list);
+		*list = temp;
+	}
+	free(*list);
 }

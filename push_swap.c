@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:51:58 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/24 15:29:28 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:02:14 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ void	push_swap(t_list **list_a, t_list **list_b)
 		return ;
 	if (list_len(*list_a) == 3)
 		three_numbers(list_a);
-	if (list_len(*list_a) > 5)
-	{
+	if (list_len(*list_a) > 3)
 		pb(list_b, list_a);
+	if (list_len(*list_a) > 3)
 		pb(list_b, list_a);
-	}
-	prepare_list_a(*list_a, *list_b);
-	prepare_list_b(*list_a, *list_b);
 	while (list_len(*list_a) > 3)
-		pb(list_b, list_a);
+	{
+		prepare_list_a(*list_a, *list_b);
+		move_cheapest_to_b(list_a, list_b);
+	}
 	three_numbers(list_a);
 	while (*list_b)
 	{

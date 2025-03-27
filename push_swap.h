@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:52:01 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/19 13:27:52 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:04:19 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <limits.h>
 # include <stdbool.h>
 # include "ft_printf/ft_printf.h"
-// # include "libft/libft.h"
 
 typedef struct s_list
 {
@@ -43,37 +42,32 @@ void	rr(t_list **list_a, t_list **list_b);
 void	sa(t_list **list);
 void	sb(t_list **list);
 void	ss(t_list **list_a, t_list **list_b);
-
-//sorter
-
 void	three_numbers(t_list **list_a);
 void	push_swap(t_list **list_a, t_list **list_b);
-
-//validations
-
 bool	only_numbers(char *arg);
 bool	check_duplicate(t_list *list, int nbr);
-void 	free_list(t_list **list);
-//utils
-
+void	free_list(t_list **list);
 void	prepare_list_a(t_list *list_a, t_list *list_b);
 void	prepare_list_b(t_list *list_a, t_list *list_b);
 int		list_len(t_list	*list);
-t_list	*find_last(t_list *list);
-t_list	*find_max(t_list *list);
-t_list	*find_min(t_list *list);
 bool	is_sorted(t_list *list);
 void	position(t_list *list);
 t_list	*init_list(int argc, char **argv);
-
+void	move_cheapest_to_b(t_list **list_a, t_list **list_b);
 void	finalize_sort(t_list **list_a);
-t_list	*find_closest_smaller(t_list *list_b, int value);
 void	set_target_a(t_list *list_a, t_list *list_b);
 void	set_target_b(t_list *list_a, t_list *list_b);
-t_list *list_new(int value);
-void list_add_bottom(t_list **list, t_list *new_node);
+t_list	*list_new(int value);
+void	list_add_bottom(t_list **list, t_list *new_node);
 t_list	*init_list(int argc, char **argv);
-t_list *find_cheapest(t_list *list_b);
 void	move_cheapest_to_a(t_list **list_a, t_list **list_b);
+void	move_cheapest_to_b(t_list **list_a, t_list **list_b);
+int		ft_isdigit(int c);
+int		ft_atoi(const char *nptr);
+t_list	*find_last(t_list *list);
+t_list	*find_max(t_list *list);
+t_list	*find_min(t_list *list);
+t_list	*find_closest_smaller(t_list *list_b, int value);
+t_list	*find_cheapest(t_list *list_b);
 
 #endif
