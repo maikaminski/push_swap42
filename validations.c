@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:59:09 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/27 15:39:03 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:53:00 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,12 @@ void	free_list(t_list **list)
 		*list = temp;
 	}
 	free(*list);
+}
+
+void	cleanup_and_exit(t_list **list)
+{
+	if (*list)
+		free_list(list);
+	ft_printf("Error\n");
+	exit(1);
 }

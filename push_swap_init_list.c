@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:02:54 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/27 15:38:16 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:03:14 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,17 +93,12 @@ t_list	*init_list(int argc, char **argv)
 	while (i < argc)
 	{
 		value = ft_atoi(argv[i]);
-		if (value > INT_MAX || value < INT_MIN || !only_numbers(argv[i]) || !check_duplicate(list, value))
-		{
-			ft_printf("ERROR\n");
-			exit(1);
-		}
+		if (value > INT_MAX || value < INT_MIN || !only_numbers(argv[i]) \
+				|| !check_duplicate(list, value))
+			cleanup_and_exit(&list);
 		new_node = list_new(value);
 		if (!new_node)
-		{
-			ft_printf("ERROR\n");
-			exit(1);
-		}
+			cleanup_and_exit(&list);
 		list_add_bottom(&list, new_node);
 		i++;
 	}

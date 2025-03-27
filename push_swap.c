@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:51:58 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/27 15:02:14 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:02:14 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ int	main(int argc, char **argv)
 	list_b = NULL;
 	if (argc < 2)
 	{
-		ft_printf("ERROR: need more arguments.\n");
+		ft_printf("Error\n");
 		return (1);
 	}
 	list_a = init_list(argc, argv);
 	if (!list_a)
 	{
-		ft_printf("ERROR: failed to initialize list_a.\n");
+		ft_printf("Error\n");
 		return (1);
 	}
 	push_swap(&list_a, &list_b);

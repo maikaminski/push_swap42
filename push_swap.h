@@ -6,7 +6,7 @@
 /*   By: makamins <makamins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:52:01 by makamins          #+#    #+#             */
-/*   Updated: 2025/03/27 15:04:19 by makamins         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:53:46 by makamins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ t_list	*find_max(t_list *list);
 t_list	*find_min(t_list *list);
 t_list	*find_closest_smaller(t_list *list_b, int value);
 t_list	*find_cheapest(t_list *list_b);
+void	cleanup_and_exit(t_list **list);
 
 #endif
